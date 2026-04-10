@@ -1,0 +1,29 @@
+# Treat all image and binary files as binary to prevent corruption during Git operations
+# This prevents Git from attempting to convert line endings in these files.
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.mp4 binary
+*.mov binary
+*.webm binary
+*.otf binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# Ensure SVG and other text-based assets use consistent line endings
+*.svg text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.md text eol=lf
