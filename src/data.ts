@@ -265,9 +265,17 @@ export const services: Project[] = [
   },
   {
     id: "s2",
+    title: "Bashi-Rura",
+    category: "WEB",
+    image: "/src/service/ogp_bashirura.png",
+    link: "https://s2works.net/bashi_rura/index.html",
+  },
+  {
+    id: "s3",
     title: "LINE スタンプ",
     category: "LINE",
-    image: "https://stickershop.line-scdn.net/stickershop/v1/product/14341364/LINEStorePC/main.png",
+    image:
+      "https://stickershop.line-scdn.net/stickershop/v1/product/14341364/LINEStorePC/main.png",
     link: "https://store.line.me/stickershop/product/14341364/ja",
   },
 ];
