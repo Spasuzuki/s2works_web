@@ -2,13 +2,15 @@ import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring, useInView } from "motion/react";
 import { Twitter, Facebook, Instagram, ArrowUpRight, X, Contact } from "lucide-react";
 import { Project } from "../data";
+import heroBg from "../img/hero-bg.jpg";
+import footerBg from "../img/footer-bg.jpg";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { href: "#works", label: "Works" },
     { href: "#service", label: "Service" },
+    { href: "#works", label: "Works" },
     { href: "#about", label: "About" },
     { href: "https://s2works.net/blog/", label: "Blog", external: true },
     { href: "#contact", label: "Contact" },
@@ -98,7 +100,7 @@ export function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/src/img/hero-bg.jpg" 
+          src={heroBg} 
           alt="" 
           className="w-full h-full object-cover opacity-10"
           referrerPolicy="no-referrer"
@@ -137,6 +139,7 @@ export function Hero() {
             transition={{ delay: 0.8, duration: 1 }}
             className="max-w-2xl text-xl md:text-2xl font-medium text-fg/60 leading-relaxed"
           >
+            デジタル体験・新規事業を専門とするプロデューサー <br />
             プランニング + デザイン/映像 + インタラクション <br />
             世の中を少しだけ面白くする仕掛けを、形にします。
           </motion.p>
@@ -318,7 +321,7 @@ export function Footer() {
       {/* Background Image with better mobile scaling and positioning */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/src/img/footer-bg.jpg" 
+          src={footerBg} 
           alt="" 
           className="w-full h-full object-cover object-[80%_center] md:object-center opacity-20"
           referrerPolicy="no-referrer"
@@ -330,7 +333,8 @@ export function Footer() {
         <div className="mb-12">
           <h2 className="text-5xl md:text-6xl font-script mb-4">Shota Suzuki</h2>
           <p className="text-lg md:text-xl font-medium tracking-widest opacity-90">
-            いつだって、仕掛け人であれ！
+            いつだって、仕掛け人であれ！<br />
+            デジタル体験・新規事業を専門とするプロデューサー
           </p>
         </div>
 

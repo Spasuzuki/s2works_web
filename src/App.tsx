@@ -8,6 +8,8 @@ import { motion, useScroll, useSpring, useTransform, AnimatePresence } from "mot
 import { ArrowRight } from "lucide-react";
 import { Navbar, Footer, WorkCard } from "./components/Layout";
 import { projects, services } from "./data";
+import heroBg from "./img/hero-bg.jpg";
+import me from "./img/me.jpg";
 
 const Marquee = ({ text, speed = 40 }: { text: string; speed?: number }) => {
   return (
@@ -58,7 +60,7 @@ export default function App() {
       {/* Fixed Background Image - Prevents excessive zooming on mobile */}
       <div 
         className="fixed inset-0 z-0 bg-cover bg-[position:80%_center] md:bg-center bg-no-repeat pointer-events-none opacity-60"
-        style={{ backgroundImage: 'url("/src/img/hero-bg.jpg")' }}
+        style={{ backgroundImage: `url(${heroBg})` }}
       />
       {/* Custom Cursor - Playful Dot */}
       <motion.div
@@ -91,7 +93,8 @@ export default function App() {
               いつだって、 <br />
               <span className="text-accent">仕掛け人</span>で <br />
               あれ！
-              <span className="block text-xl md:text-2xl font-medium mt-6 opacity-80 tracking-normal">
+              <span className="block text-lg md:text-2xl font-medium mt-6 opacity-80 tracking-normal">
+                デジタル体験・新規事業を専門とするプロデューサー <br />
                 I'm a Creative Producer In Tokyo
               </span>
             </h1>
@@ -99,6 +102,40 @@ export default function App() {
         </section>
 
         <Marquee text="PLANNING + DESIGN + INTERACTION + VIDEO + s2works" />
+
+        {/* Service Section */}
+        <section id="service" className="px-6 md:px-12 py-32 bg-white">
+          <div className="max-w-6xl mx-auto mb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-sm uppercase tracking-[0.4em] font-bold text-accent mb-4 flex items-center gap-4">
+                <span className="w-12 h-[1px] bg-accent"></span>
+                Service
+              </h2>
+              <div className="overflow-hidden">
+                <motion.p 
+                   initial={{ y: "100%" }}
+                   whileInView={{ y: 0 }}
+                   viewport={{ once: true }}
+                   transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+                   className="text-[10vw] md:text-[7vw] font-bold tracking-tight leading-[1.1]"
+                >
+                  プライベートで<br />カタチにしたもの
+                </motion.p>
+              </div>
+            </motion.div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
+            {services.map((service, i) => (
+              <WorkCard key={service.id} project={service} index={i} />
+            ))}
+          </div>
+        </section>
 
         {/* Works Grid - Card Style */}
         <section id="works" className="px-6 md:px-12 py-24 bg-white relative overflow-hidden">
@@ -173,40 +210,6 @@ export default function App() {
           </motion.div>
         </section>
 
-        {/* Service Section */}
-        <section id="service" className="px-6 md:px-12 py-32 bg-white">
-          <div className="max-w-6xl mx-auto mb-20">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-sm uppercase tracking-[0.4em] font-bold text-accent mb-4 flex items-center gap-4">
-                <span className="w-12 h-[1px] bg-accent"></span>
-                Service
-              </h2>
-              <div className="overflow-hidden">
-                <motion.p 
-                  initial={{ y: "100%" }}
-                  whileInView={{ y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-                  className="text-[10vw] md:text-[7vw] font-bold tracking-tight leading-[1.1]"
-                >
-                  カタチに<br />したもの
-                </motion.p>
-              </div>
-            </motion.div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
-            {services.map((service, i) => (
-              <WorkCard key={service.id} project={service} index={i} />
-            ))}
-          </div>
-        </section>
-
         {/* Philosophy Section */}
         <section id="about" className="px-6 md:px-12 py-32 bg-[#111] text-white overflow-hidden relative">
           <motion.div 
@@ -225,7 +228,7 @@ export default function App() {
               transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
               className="text-accent font-bold uppercase tracking-widest text-sm mb-8"
             >
-              About
+              ABOUT - SHOTA SUZUKI
             </motion.h2>
 
             <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
@@ -238,7 +241,7 @@ export default function App() {
               >
                 <div className="relative aspect-[3/4] overflow-hidden rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl">
                   <img 
-                    src="/src/img/me.jpg" 
+                    src={me} 
                     alt="Shota Suzuki" 
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
@@ -273,7 +276,8 @@ export default function App() {
                     transition={{ duration: 1, delay: 0.6 }}
                   >
                     ソーシャルゲーム黎明期にモバイル勝手サイトで「侍キングダム」の開発を行う。(PHP+Flash Lite1.1) その後、mixiモバイル、モバゲーのサードパーティオープンに携わる。自称モバイルソーシャルゲームで初ガチャシステムを導入した「やきゅとも!」にてモバゲーSAP内でのTOP10以内にランクイン。現在はリトルプラネットのプロデュースとファミリー軸で「デジタル×アナログ」の新しいあり方を考えることをしています。スマートフォンで好きなアプリが落とせる時代が来たように、空間でもデジタルを活用して好きな空間に変えられるような世界が訪れるのではないかと妄想し活動してます。目標は自分の老後をワクワクさせることです。<br />
-                    <span className="block mt-4 font-bold">趣味は、企画立案・ランニング・株式取引・温泉ソムリエ</span>
+                    <span className="block mt-4 font-bold">趣味:企画立案/ランニング/株取引</span>
+                    <span className="block font-bold">資格:温泉ソムリエ/睡眠環境・寝具指導士</span>
                   </motion.p>
                 </div>
 
